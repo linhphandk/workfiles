@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{config, pkgs, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -25,12 +25,17 @@
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
      pkgs.ripgrep
      pkgs.nerd-fonts.profont
+     pkgs.nerd-fonts.jetbrains-mono
+     pkgs.nerd-fonts.hack
      pkgs.nerd-fonts.symbols-only
      pkgs.oh-my-zsh
      pkgs.aerospace
      pkgs.jankyborders
-     pkgs.sketchybar
      pkgs.wezterm
+     pkgs.fastfetch
+     pkgs.oh-my-zsh
+     pkgs.nodejs_24
+
    # # fonts?
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
@@ -41,9 +46,36 @@
     #     })
 
   ];
-  programs.zsh = {
-    enable = true;
+  services.jankyborders = {
+      enable = true;
+      settings =            {
+                  style="round";
+        	        width=6.0;
+        	        hidpi="off";
+        	        active_color="0xffe2e2e3";
+        	        inactive_color="0xff414550";
+                }
+      ;
+    };
+programs.sketchybar= {
+  enable = true;
+};
+   
+  programs.aerospace = {
+      enable=true;
+      launchd = {
+          enable=true;
+        };
   };
+  programs.zsh.oh-my-zsh= {
+    enable = true;
+    plugins = [
+      "git"
+      "python"
+      "man"
+    ];
+    theme = "jonathan";
+  };    
    programs.neovim = {
    enable = true;
 
@@ -82,10 +114,10 @@ settings = {
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # # symlink to the Nix store copy.
     ".config/nvim".source = ~/workfiles/nvim;
-    ".config/alacritty".source = ~/workfiles/alacritty;
     ".config/sketchybar".source = ~/workfiles/sketchybar;
+    ".config/wezterm".source = ~/workfiles/wezterm;
     ".aerospace.toml".source = ~/workfiles/.aerospace.toml;
-    "Library/LaunchAgents/com.felixkratz.sketchybar.plist".source = ~/workfiles/com.felixkratz.sketchybar.plist;
+    ".zshrc".source = ~/workfiles/.zshrc;
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
