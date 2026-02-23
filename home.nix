@@ -113,7 +113,7 @@ settings = {
     # # Building this configuration will create a copy of 'dotfiles/screenrc' in
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # # symlink to the Nix store copy.
-    ".config/nvim".source = ~/workfiles/nvim;
+    # ".config/nvim".source = ~/workfiles/nvim;
     ".config/sketchybar".source = ~/workfiles/sketchybar;
     ".config/wezterm".source = ~/workfiles/wezterm;
     ".aerospace.toml".source = ~/workfiles/.aerospace.toml;
